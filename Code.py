@@ -17,5 +17,5 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    print(message.author.name + ' said: ' + str(message.author.id))
+    print(message.author.name + ' said: ' + message.content)
 client.run(TOKEN)
