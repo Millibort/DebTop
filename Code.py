@@ -24,14 +24,25 @@ async def on_message(message):
     presentDate = datetime.datetime.now()
     unix_timestamp = datetime.datetime.timestamp(presentDate)*1000
 
-    with open('Messages/' + str(message.author.id) + '.txt', 'w') as f:
-        f.write(str(message.guild.id))
-        f.write("`")
-        f.write(str(message.channel.id))
-        f.write("`")
-        f.write(str(unix_timestamp))
-        f.write("`")
-        f.write(str(message.content))
-        f.write("|")
+    try:
+        with open('Messages/' + str(message.author.id) + '.txt', 'x') as f:
+            f.write(str(message.guild.id))
+            f.write("`")
+            f.write(str(message.channel.id))
+            f.write("`")
+            f.write(str(unix_timestamp))
+            f.write("`")
+            f.write(str(message.content))
+            f.write("|")
+    except FileExistsError:
+        with open('Messages/' + str(message.author.id) + '.txt', 'w') as f:
+            f.write(str(message.guild.id))
+            f.write("`")
+            f.write(str(message.channel.id))
+            f.write("`")
+            f.write(str(unix_timestamp))
+            f.write("`")
+            f.write(str(message.content))
+            f.write("|")
 
 client.run(TOKEN)
