@@ -35,7 +35,10 @@ async def on_message(message):
             f.write(str(message.content))
             f.write("|")
     except FileExistsError:
+        with open('Messages/' + str(message.author.id) + '.txt', 'r') as f:
+            old = f.read()
         with open('Messages/' + str(message.author.id) + '.txt', 'w') as f:
+            f.write(old)
             f.write(str(message.guild.id))
             f.write("`")
             f.write(str(message.channel.id))
