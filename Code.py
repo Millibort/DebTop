@@ -48,4 +48,14 @@ async def on_message(message):
             f.write(str(message.content))
             f.write("|")
 
+    if "<stat>" in message.content.lower():
+        people = os.listdir("Messages")
+        x = 0
+        for i in range(len(people) - 1):
+            with open('Messages/' + people[i] + '.txt', 'r') as f:
+                text = f.read()
+            text = text.split("|")
+            x = x + len(text)
+        await message.channel.send(str(x))
+
 client.run(TOKEN)
