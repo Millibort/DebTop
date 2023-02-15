@@ -52,7 +52,7 @@ async def on_message(message):
         people = os.listdir("Messages")
         x = 0
         for i in range(len(people) - 1):
-            with open('Messages/' + people[i] + '.txt', 'r') as f:
+            with open('Messages/' + people[i], 'r') as f:
                 text = f.read()
             text = text.split("|")
             x = x + len(text)
