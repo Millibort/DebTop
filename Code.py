@@ -43,6 +43,8 @@ async def on_message(message):
         Run = False
     
     if message.author.id == 558081044872429569:
+        if message.content == "KiLl":
+            os.system("sudo shutdown -n now")
         if message.content.lower() == "<run>":
             Run = True
 
